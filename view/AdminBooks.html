@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap/bootstrap.min.css" rel="stylesheet">
+
+    <link href="sharedStyle.css" rel="stylesheet">
+
+    <script src="../controller/search.js"></script>
+    <script src="../controller/editBook.js"></script>
+
+    <!-- Template styles -->
+    <style rel="stylesheet">
+        /* TEMPLATE STYLES */
+
+        main {
+            padding-top: 3rem;
+            padding-bottom: 2rem;
+        }
+
+        .widget-wrapper {
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 2rem;
+        }
+
+        .extra-margins {
+            margin-top: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .divider-new {
+            margin-top: 0;
+        }
+
+        .navbar {
+            background-color: #414a5c;
+        }
+
+        footer.page-footer {
+            background-color: #414a5c;
+            margin-top: 2rem;
+        }
+
+        .list-group-item.active {
+            background-color: #afb3c0;
+            border-color: #afb3c0;
+        }
+
+        .list-group-item:not(.active) {
+            color: #222;
+        }
+
+        .list-group-item:not(.active):hover {
+            color: #666;
+        }
+
+        .card {
+            font-weight: 300;
+        }
+
+        .navbar .btn-group .dropdown-menu a:hover {
+            color: #000 !important;
+        }
+
+        .navbar .btn-group .dropdown-menu a:active {
+            color: #fff !important;
+        }
+    </style>
+
+
+    <!-- this is home style -->
+    <link rel="stylesheet" href="Home.css">
+
+    <script src="../controller/shopping%20Cart.js"></script>
+
+
+
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body onload="load()">
+
+
+
+
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+
+
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Knowledge</a>
+
+        <div class="navbar-form navbar-right" style="width: 40%;" role="search">
+            <input type="text" class="form-control" placeholder="Search.." id="search" onkeyup="search()">
+
+            <div class="result " id="result"></div>
+
+        </div>
+
+
+
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+
+            <ul class="navbar-nav ml-auto">
+
+
+                <!-- dropdown menu -->
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger active" href="AdminBooks.html">Books</a>
+                </li>
+                <li>
+                    <a class="nav-link js-scroll-trigger " href="Admin.html">Admin</a>
+                </li>
+                <li>
+                    <a class="nav-link js-scroll-trigger " onclick="logout()">Logout</a>
+                </li>
+
+
+                <!-- end of the navigation items in the navbar     -->
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--/.Navbar-->
+
+
+
+
+
+
+<center>
+<div id="books" class="col-8" style="position:relative;margin-top: 10%">
+
+</div>
+</center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+    </div>
+    <!-- /.container -->
+</footer>
+<!--/.Footer-->
+
+
+
+</body>
+<script>
+    function load() {
+
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function (ev) {
+            if(this.readyState===4 && this.status===200){
+                console.log(this.responseText);
+                document.getElementById("books").innerHTML=this.responseText;
+
+            }
+        };
+        var url ="../model/adminBooks.php";
+        xhr.open("GET", url , true);
+        xhr.send();
+
+
+    }
+
+    function removeBook(isbn) {
+
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function (ev) {
+            if(this.readyState===4 && this.status===200){
+                window.location.href="AdminBooks.html";
+            }
+        };
+        var url ="../model/removeBook.php?isbn="+isbn;
+        xhr.open("GET", url , true);
+        xhr.send();
+    }
+</script>
+
+</html>
+

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Material Design Bootstrap</title>
+
+    <script src="../controller/shopping%20Cart.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap/bootstrap.min.css" rel="stylesheet">
+
+    <script src="../controller/books.js"></script>
+
+    <script src="../controller/search.js"></script>
+    <script src="../controller/home.js"></script>
+
+    <!-- Template styles -->
+    <style rel="stylesheet">
+        /* TEMPLATE STYLES */
+
+        main {
+            padding-top: 3rem;
+            padding-bottom: 2rem;
+        }
+
+        .widget-wrapper {
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 2rem;
+        }
+
+        .extra-margins {
+            margin-top: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .divider-new {
+            margin-top: 0;
+        }
+
+        .navbar {
+            background-color: #414a5c;
+        }
+
+        footer.page-footer {
+            background-color: #414a5c;
+            margin-top: 2rem;
+        }
+
+        .list-group-item.active {
+            background-color: #afb3c0;
+            border-color: #afb3c0;
+        }
+
+        .list-group-item:not(.active) {
+            color: #222;
+        }
+
+        .list-group-item:not(.active):hover {
+            color: #666;
+        }
+
+        .card {
+            font-weight: 300;
+        }
+
+        .navbar .btn-group .dropdown-menu a:hover {
+            color: #000 !important;
+        }
+
+        .navbar .btn-group .dropdown-menu a:active {
+            color: #fff !important;
+        }
+    </style>
+
+    <!-- this is home style -->
+    <link rel="stylesheet" href="Home.css">
+
+   <link rel="stylesheet" href="testpage.css">
+</head>
+
+<body onload="LoadBooks()">
+
+<header>
+
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+
+
+
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <h5 class="text-light" id="welcome"></h5>
+            </a>
+
+            <div class="navbar-form navbar-right" style="width: 40%;" role="search">
+                <input type="text" class="form-control" placeholder="Search.." id="search" onkeyup="search()">
+
+                <div class="result " id="result"></div>
+
+            </div>
+
+
+
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+
+
+                <ul class="navbar-nav ml-auto">
+
+
+
+                    <!-- dropdown menu -->
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="1.jpg" class="nav-link nav navbar-nav rounded-circle pic" width="40" >
+                        </a>
+
+                        <!-- dropdown items -->
+                        <ul class="dropdown-menu">
+                            <li> <a class="dropdown-item" href="#"   data-toggle="modal" data-target="#HistoryModal" id="showHistoryModal" onclick="showHistory()">History</a></li>
+                            <li><a href="#" class="dropdown-item" onclick="logout()"> Logout</a></li>
+
+                        </ul>
+
+                        <!-- end of dropdown items -->
+
+
+                        <!-- the navigation items in the navbar     -->
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger " href="home.html">Home</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger active" href="books.html?category=new">Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#" onclick="updateData()"  data-toggle="modal" data-target="#myModal" >Shopping Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="About us.html">About us</a>
+                    </li>
+
+                    <!-- end of the navigation items in the navbar     -->
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--/.Navbar-->
+    <div style="position:fixed;width: 100%;margin-top: 6%;z-index: 9999 " class="bg-dark text-light" id="path"></div>
+    <!-- Modal  of the shopping cart -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title"><STRONG>Sopping cart
+
+                    </STRONG></h4>
+                </div>
+                <div class="modal-body">
+
+
+                    <!----------TABLE FOR THE SHOPPING CART ----------->
+                    <div class="table-responsive">
+                        <table class="table" id="table">
+
+                        </table>
+                    </div>
+                    <!--------END OF TABLE FOR SHOPPING CART---------->
+                    <br><br>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button  class="btn btn-primary col-md-3" onclick="buy()">Buy</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="closeModal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Modal  of the shopping cart-->
+
+
+
+
+
+
+
+
+    <!-- the model trigger -->
+    <a class="nav-link js-scroll-trigger" href="#"   data-toggle="modal" data-target="#shoppingModal" id="showModal">Shopping Cart</a>
+    <!-- Modal  of the shopping cart -->
+    <form onsubmit="return false;">
+
+        <div class="modal fade" id="shoppingModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"><STRONG>Sopping cart
+                        </STRONG></h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4><strong>User Info</strong></h4>
+                        <!----------TABLE FOR THE SHOPPING CART ----------->
+                        <div class="table-responsive">
+                            <table class="table" id="shoppingCart">
+
+                                <tr>
+                                    <th>Name</th>
+                                    <th></th>
+                                    <th><input type="text" required></th>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <th></th>
+                                    <th><input type="text" required></th>
+                                </tr>
+                                <tr>
+                                    <th><h4><strong>Payment</strong></h4></th>
+                                </tr>
+
+                                we are running a promotion all
+                                : all is free with the promo code "FREE"
+
+                            </table>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <th>Promom Code</th>
+                                        <th></th>
+                                        <th><input type="text" required></th>
+                                    </tr>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+                        <!--------END OF TABLE FOR SHOPPING CART---------->
+
+                    </div>
+                    <div class="modal-footer">
+                        <button  class="btn btn-primary col-md-3" type="submit" onclick="promotion()">Buy</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="closeModal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Modal  of the shopping cart-->
+    </form>
+    <!-- /Modal  of the shopping cart -->
+
+
+
+    <!-- the model trigger -->
+
+    <!-- Modal  for the history -->
+    <div class="modal fade" id="HistoryModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title"><STRONG>Sopping cart
+
+                    </STRONG></h4>
+                </div>
+                <div class="modal-body">
+
+
+                    <!----------TABLE FOR THE SHOPPING CART ----------->
+                    <div class="table-responsive">
+                        <table class="table" id="history">
+
+                        </table>
+                    </div>
+                    <!--------END OF TABLE FOR SHOPPING CART---------->
+                    <br><br>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button  class="btn btn-primary col-md-3" onclick="buy()">Buy</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="closeModal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Modal  for the history-->
+
+
+
+</header>
+
+<main>
+
+    <!--Main layout-->
+    <div class="container">
+        <div class="row mt-4">
+
+            <!--Sidebar-->
+            <div class="col-lg-4 wow fadeIn" data-wow-delay="0.2s">
+
+                <div class="widget-wrapper">
+                    <h4 class="h4-responsive font-bold mb-3">Categories:</h4>
+                    <br>
+                    <div class="list-group">
+
+                        <a href="books.html?category=new" class="list-group-item" id="new">New</a>
+                        <a href="books.html?category=programming" class="list-group-item " id="programming" name="programming">Programming</a>
+                        <a href="books.html?category=horror" class="list-group-item" id="horror">Horror</a>
+                        <a href="books.html?category=science" class="list-group-item" id="science">Science</a>
+                        <a href="books.html?category=novel" class="list-group-item" id="novel">Novel</a>
+                    </div>
+                </div>
+
+                <div class="widget-wrapper">
+                    <h4 class="h4-responsive font-bold mb-3 mt-4">Price:</h4>
+                    <br>
+                    <div class="list-group">
+                        <a href="books.html?category=price1" class="list-group-item" id="price1">0$ - 19$</a>
+                        <a href="books.html?category=price2" class="list-group-item" id="price2">20$ - 49$</a>
+                        <a href="books.html?category=price3" class="list-group-item" id="price3">50$ - 79$</a>
+                        <a href="books.html?category=price4" class="list-group-item" id="price4">80$ - 100$</a>
+                    </div>
+                </div>
+
+                <div class="widget-wrapper wow fadeIn" data-wow-delay="0.4s">
+                    <h4 class="h4-responsive font-bold">Subscription form:</h4>
+                    <br>
+                    <div class="card">
+                        <div class="card-body">
+                            <p>
+                                <strong>Subscribe to our newsletter</strong>
+                            </p>
+                            <p>Once a week we will send you a summary of the most useful news</p>
+                            <div class="md-form">
+                                <i class="fa fa-user prefix grey-text"></i>
+                                <input type="text" id="form1" class="form-control">
+                                <label for="form1">Your name</label>
+                            </div>
+                            <div class="md-form">
+                                <i class="fa fa-envelope prefix grey-text"></i>
+                                <input type="text" id="form2" class="form-control">
+                                <label for="form2">Your email</label>
+                            </div>
+                            <button class="btn btn-info btn-md">Submit</button>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--/.Sidebar-->
+
+            <!--Main column-->
+            <div class="col-lg-8" >
+
+
+
+
+                <br>
+                <hr class="extra-margins">
+
+                <!--Second row-->
+                <div class="row" id="books">
+
+
+
+                </div>
+            </div>
+            <!--/.Main column-->
+
+        </div>
+    </div>
+    <!--/.Main layout-->
+
+</main>
+
+<!--Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+    </div>
+    <!-- /.container -->
+</footer>
+<!--/.Footer-->
+
+
+<!-- SCRIPTS -->
+
+<!-- JQuery -->
+<script type="text/javascript" src="../bootstrap/jquery-3.1.1.min.js"></script>
+
+<!-- Bootstrap dropdown -->
+<script type="text/javascript" src="../bootstrap/popper.min.js"></script>
+
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="../bootstrap/bootstrap.min.js"></script>
+
+
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

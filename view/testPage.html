@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="testpage.css" rel="stylesheet">
+    <link rel="stylesheet" href="Home.css">
+    <!-- Bootstrap core CSS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="../bootstrap/jquery-3.1.1.min.js"></script>
+
+    <!-- Bootstrap dropdown -->
+    <script type="text/javascript" src="../bootstrap/popper.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="../bootstrap/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+
+
+
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+
+        <div class="navbar-form navbar-right" style="width: 40%;" role="search">
+            <input type="text" class="form-control" placeholder="Search.." id="search" onkeyup="search()">
+
+            <div class="result " id="result"></div>
+
+        </div>
+
+
+
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+
+            <ul class="navbar-nav ml-auto">
+
+
+                <!-- dropdown menu -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="1.jpg" class="nav-link nav navbar-nav rounded-circle pic" width="40" >
+                    </a>
+                    <!-- dropdown items -->
+                    <ul class="dropdown-menu">
+                        <li><a href="#" class="dropdown-item"> profile</a></li>
+                        <li><a href="#" class="dropdown-item"> preferences</a></li>
+                        <li><a href="#" class="dropdown-item"> Logout</a></li>
+
+                    </ul>
+
+                    <!-- end of dropdown items -->
+
+                    <!-- the navigation items in the navbar     -->
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger active" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                </li>
+
+                <!-- end of the navigation items in the navbar     -->
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-----to make some space ------>
+<div style="margin-top: 5%" ></div>
+<!-----/to make some space ------>
+
+<div class="bg-dark" style="position: absolute;height:800px;width: 20%"
+></div>
+
+
+
+
+
+
+<!------ this is the book Container------>
+<br><br><br>
+<div class="container">
+    <div class="row row-margin-bottom offset-1">
+
+
+        <div class="col-md-5 no-padding lib-item " data-category="view">
+            <div class="lib-panel">
+                <div class="row box-shadow">
+                    <div class="col-md-6">
+                        <img class="lib-img-show" src="../covers/horror/2.jpg" style="height: 90%;">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="lib-row lib-header">
+                          <h2><strong id="name">Name</strong></h2>
+                        </div>
+                        <hr>
+                        <h4 class="offset-1" id="author">Author :</h4>
+                        <hr>
+                        <h4 class="offset-1" id="price">price :</h4>
+                        <hr>
+                        <h4 class="offset-1" id="description-title">Description :</h4>
+                        <br>
+                        <p class="offset-1" id="description"></p>
+                        <hr>
+                        <h4 class="offset-1" id="rate">Rate : &#9733; &#9733; &#9733; &#9733; &#9734;</h4>
+                        <hr>
+
+
+                    </div>
+                    <button class="btn btn-primary col-4" style="margin-top: 1px;margin-bottom: 15px;margin-left: 20%">
+                        Buy
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-5 no-padding lib-item " data-category="view">
+            <div class="lib-panel">
+                <div class="row box-shadow">
+                    <div class="col-md-6">
+                        <img class="lib-img-show" src="../covers/horror/2.jpg" style="height: 90%;">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="lib-row lib-header">
+                            <h2><strong id="name">Name</strong></h2>
+                        </div>
+                        <hr>
+                        <h4 class="offset-1" id="author">Author :</h4>
+                        <hr>
+                        <h4 class="offset-1" id="price">price :</h4>
+                        <hr>
+                        <h4 class="offset-1" id="description-title">Description :</h4>
+                        <br>
+                        <p class="offset-1" id="description"></p>
+                        <hr>
+                        <h4 class="offset-1" id="rate">Rate : &#9733; &#9733; &#9733; &#9733; &#9734;</h4>
+                        <hr>
+
+
+                    </div>
+                    <button class="btn btn-primary col-4" style="margin-top: 1px;margin-bottom: 15px;margin-left: 20%">
+                        Buy
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-5 no-padding lib-item " data-category="view">
+            <div class="lib-panel">
+                <div class="row box-shadow">
+                    <div class="col-md-6">
+                        <img class="lib-img-show" src="../covers/horror/2.jpg" style="height: 90%;">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="lib-row lib-header">
+                            <h2><strong id="name">Name</strong></h2>
+                        </div>
+                        <hr>
+                        <h4 class="offset-1" id="author">Author :</h4>
+                        <hr>
+                        <h4 class="offset-1" id="price">price :</h4>
+                        <hr>
+                        <h4 class="offset-1" id="description-title">Description :</h4>
+                        <br>
+                        <p class="offset-1" id="description"></p>
+                        <hr>
+                        <h4 class="offset-1" id="rate">Rate : &#9733; &#9733; &#9733; &#9733; &#9734;</h4>
+                        <hr>
+
+
+                    </div>
+                    <button class="btn btn-primary col-4" style="margin-top: 1px;margin-bottom: 15px;margin-left: 20%">
+                        Buy
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-5 no-padding lib-item " data-category="view">
+            <div class="lib-panel">
+                <div class="row box-shadow">
+                    <div class="col-md-6">
+                        <img class="lib-img-show" src="../covers/horror/2.jpg" style="height: 90%;">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="lib-row lib-header">
+                            <h2><strong id="name">Name</strong></h2>
+                        </div>
+                        <hr>
+                        <h4 class="offset-1" id="author">Author :</h4>
+                        <hr>
+                        <h4 class="offset-1" id="price">price :</h4>
+                        <hr>
+                        <h4 class="offset-1" id="description-title">Description :</h4>
+                        <br>
+                        <p class="offset-1" id="description"></p>
+                        <hr>
+                        <h4 class="offset-1" id="rate">Rate : &#9733; &#9733; &#9733; &#9733; &#9734;</h4>
+                        <hr>
+
+
+                    </div>
+                    <button class="btn btn-primary col-4" style="margin-top: 1px;margin-bottom: 15px;margin-left: 20%">
+                        Buy
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="col-md-1"></div>
+
+
+    </div>
+</div>
+
+<!------/this is the book Container------>
+
+
+<div class="container">
+
+    <div class="offset-0">
+        <div class="card">
+    <center><h2>Comments</h2></center>
+
+            <!----comments container--->
+    <div class="container" id="comments">
+
+        <!-------this is comment ------>
+        <div class="card ">
+            <div class="row offset-1">
+                <img src="1.jpg" class="rounded-circle img-fluid" style="height: 50px;width: 50px">
+                <h3 class="offset-0" style="margin-left: 20px">Person</h3>
+            </div>
+            <div class="lib-desc offset-2">
+                <p>this is my comment so that you can know who i am</p>
+            </div>
+
+        </div>
+        <!-------/this is comment ------>
+
+
+
+
+    </div>
+            <!----/comments container--->
+        <br><br>
+</div>
+</div>
+</div>
+
+<br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+<!--Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+    </div>
+    <!-- /.container -->
+</footer>
+<!--/.Footer-->
+
+
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bock Shop</title>
+
+    <script src="../bootstrap/jquery-3.1.1.min.js"></script>
+    <script src="../bootstrap/popper.min.js"></script>
+    <script src="../bootstrap/bootstrap.min.js"></script>
+    <script src="../bootstrap/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+    <script src="../controller/home.js"></script>
+    <link rel="stylesheet" href="sharedStyle.css">
+    <script src="../controller/search.js"></script>
+    <link href="testpage.css" rel="stylesheet">
+    <script src="../controller/book.js"></script>
+    <script src="../controller/shopping%20Cart.js"></script>
+    <script src="../controller/sharedScript.js"></script>
+
+
+</head>
+
+
+
+<body >
+
+
+<header>
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+
+
+
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top"><br><br>
+
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <h6 class="text-light" id="welcome"></h6>
+            </a>
+        </a>
+
+        <div class="navbar-form navbar-right" style="width: 40%; " role="search">
+            <input type="text" class="form-control" placeholder="Search.." id="search" onkeyup="search()">
+
+            <div class="result " id="result"></div>
+
+        </div>
+
+
+
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+
+            <ul class="navbar-nav ml-auto" style="font-size: 19px;">
+
+
+
+                <!-- dropdown menu -->
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="1.jpg" id="picture" style="width: 50px;height: 50px" class="nav-link nav navbar-nav rounded-circle pic" width="50" >
+                    </a>
+
+                    <!-- dropdown items -->
+                    <ul class="dropdown-menu">
+                        <li> <a class="dropdown-item" href="#"   data-toggle="modal" data-target="#HistoryModal" id="showHistoryModal" onclick="showHistory()">History</a></li>
+                        <li><a href="#" class="dropdown-item" onclick="logout()"> Logout</a></li>
+
+                    </ul>
+
+                    <!-- end of dropdown items -->
+
+
+                    <!-- the navigation items in the navbar     -->
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger active" id="home" style="cursor: pointer;" onclick="loadHome()">Home</a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" id="navBooks" style="cursor: pointer;" onclick="loadBooks('new')">Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#" onclick="updateData()"  data-toggle="modal" data-target="#myModal" >Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger " style="cursor: pointer;" id="aboutUs" onclick="aboutUs()">About us</a>
+                </li>
+
+                <!-- end of the navigation items in the navbar     -->
+
+            </ul>
+        </div>
+    </div>
+
+</nav>
+<!--/.Navbar-->
+
+
+<!-- Modal  of the shopping cart -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title"><STRONG>Sopping cart
+
+                </STRONG></h4>
+            </div>
+            <div class="modal-body">
+
+
+                <!----------TABLE FOR THE SHOPPING CART ----------->
+                <div class="table-responsive">
+                    <table class="table" id="table">
+
+                    </table>
+                </div>
+                <!--------END OF TABLE FOR SHOPPING CART---------->
+                <br><br>
+
+
+            </div>
+            <div class="modal-footer">
+                <button  class="btn btn-primary col-md-3" onclick="buy()">Buy</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="closeModal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Modal  of the shopping cart-->
+
+
+
+<!-- the model trigger -->
+<a class="nav-link js-scroll-trigger" href="#"   data-toggle="modal" data-target="#shoppingModal" id="showModal">Shopping Cart</a>
+<!-- Modal  of the shopping cart -->
+<form onsubmit="return false;">
+
+    <div class="modal fade" id="shoppingModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><STRONG>Sopping cart
+                    </STRONG></h4>
+                </div>
+                <div class="modal-body">
+                    <h4><strong>User Info</strong></h4>
+                    <!----------TABLE FOR THE SHOPPING CART ----------->
+                    <div class="table-responsive">
+                        <table class="table" id="shoppingCart">
+
+                            <tr>
+                                <th>Name</th>
+                                <th></th>
+                                <th><input type="text" required  pattern="/[A-za-z]/"></th>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <th></th>
+                                <th><input type="email" required minlength="5"  pattern="/[a-zA-z0-9]/"></th>
+                            </tr>
+                            <tr>
+                                <th><h4><strong>Payment</strong></h4></th>
+                            </tr>
+
+                            we are running a promotion all
+                            : all is free with the promo code "FREE"
+
+                        </table>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <th>Promom Code</th>
+                                    <th></th>
+                                    <th><input type="text" required id="free" minlength="4"></th>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+                    <!--------END OF TABLE FOR SHOPPING CART---------->
+
+                </div>
+                <div class="modal-footer">
+                    <button  class="btn btn-primary col-md-3" type="submit" onclick="promotion()">Buy</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="closeModal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Modal  of the shopping cart-->
+</form>
+<!-- /Modal  of the shopping cart -->
+
+
+
+<!-- Modal  for the history -->
+<div class="modal fade" id="HistoryModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title"><STRONG>Sopping cart
+
+                </STRONG></h4>
+            </div>
+            <div class="modal-body">
+
+
+                <!----------TABLE FOR THE SHOPPING CART ----------->
+                <div class="table-responsive">
+                    <table class="table" id="history">
+
+                    </table>
+                </div>
+                <!--------END OF TABLE FOR SHOPPING CART---------->
+                <br><br>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="closeModal" >Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Modal  for the history-->
+
+
+
+    <!-- Modal   for buying the book  -->
+    <div class="modal fade" id="myModal2" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title"><STRONG>
+                        Info
+                    </STRONG></h4>
+                </div>
+                <div class="modal-body">
+
+
+                    <!----------TABLE FOR THE SHOPPING CART ----------->
+
+                    <center><div class="text-primary text-info">
+                        <h3>the book had been added successfully </h3>
+                    </div></center>
+
+                    <!--------END OF TABLE FOR SHOPPING CART---------->
+                    <br><br>
+
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="buyBook()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal  for buying the book -->
+
+
+
+
+    <!-------------belt model ----------------------->
+
+
+    <a class="nav-link js-scroll-trigger" href="#"   data-toggle="modal" data-target="#beltModal" id="beltModalTrigger">Shopping Cart</a>
+    <div class="modal fade" id="beltModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title"><STRONG>
+                        Info
+                    </STRONG></h4>
+                </div>
+                <div class="modal-body" id="belt">
+
+
+                    <!----------TABLE FOR THE SHOPPING CART ----------->
+
+                    <center><div class="text-primary text-info">
+                        <h3>the book had been added successfully </h3>
+                    </div></center>
+
+                    <!--------END OF TABLE FOR SHOPPING CART---------->
+                    <br><br>
+
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-------------/belt model ---------------------->
+
+</header>
+
+
+
+<main id="main">
+    <!--Main layout-->
+
+</main>
+
+
+
+
+<!-- Footer -->
+<footer class="py-5 bg-dark " style="position: relative;top: 100px;box-shadow: 0 5px 10px 0 rgba(0,0,0,0.16), 0 5px 20px 0 rgba(0,0,0,0.12);">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+
+
+
+</body>
+
+</html>

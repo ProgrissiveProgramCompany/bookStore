@@ -1,0 +1,47 @@
+<?php
+require "connection.php";
+$userid = "2";
+$sql = "select Cart.userid , Books.title,BOOKS.isbn , count(Books.isbn) as count , sum(Books.price) as totalPrice from cart NATURAL JOIN books
+        where Cart.userid='$userid'
+        GROUP BY BOOKS.isbn";
+$books = array();
+$bookCounter =0;
+$display = "    <thead>
+                                <tr>
+                                    <th ><strong>Title</strong></th>
+                                    <th><strong>Quantity</strong></th>
+                                    <th><strong>Price(summation)</strong></th>
+                                    <th><strong>Remove item</strong></th>
+                                </tr>
+";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+
+    while ($row = $result->fetch_assoc()) {
+        $title = $row['title'];
+        $count = $row['count'];
+        $price =$row['totalPrice'];
+        $isbn = $row['isbn'];
+
+        $display = $display."
+                    <tr>
+                        <th>$title</th>
+                        <th>$count</th>
+                        <th>$price$</th>
+                        <th><button class='btn btn-danger ' onclick='removeItem($isbn)'>remove</button></th>
+                    </tr>  
+        ";
+
+    }
+        $display = $display."</thead>";
+        echo $display;
+}
+else{
+    echo "    <br><br>
+            <center><h4><strong>
+            you did not buy any thing yet
+           </strong></h4></center>";
+}
+
+
+?>
